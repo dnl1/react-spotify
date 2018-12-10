@@ -1,6 +1,6 @@
 # react-spotify
 
-[Demo](http://dnl1.github.io/react-spotify)
+<a href="http://dnl1.github.io/react-spotify" target="_blank">Demo</a>
 
 Using:
 - React
