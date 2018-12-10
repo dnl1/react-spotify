@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { msToMinutesAndSeconds } from "../../helpers/utils";
 import { Label } from "../../style";
+import { resolvePath } from "../../helpers/routeHelper";
+
+const playSvgPath = resolvePath('/assets/images/play.svg');
+const pauseSvgPath = resolvePath('/assets/images/pause.svg')
 
 const AlbumTrackListWrapper = styled.div`
   display: inline-flex;
@@ -35,7 +39,7 @@ const OrderedList = styled.ol`
   li:hover {
     :before {
       content: "";
-      background-image: url(/assets/images/play.svg);
+      background-image: url(${playSvgPath});
       background-repeat: no-repeat;
       vertical-align: middle;
       margin-right: 6px;
@@ -46,7 +50,7 @@ const OrderedList = styled.ol`
   li.active {
     :before {
       content: "";
-      background-image: url(/assets/images/pause.svg);
+      background-image: url(${pauseSvgPath});
       background-repeat: no-repeat;
       vertical-align: middle;
       margin-right: 6px;

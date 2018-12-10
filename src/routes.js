@@ -3,6 +3,7 @@ import Search from "./components/Search";
 import Album from "./components/Album";
 import { Route } from "react-router-dom";
 import styled from "styled-components";
+import { resolvePath } from "./helpers/routeHelper";
 
 const Wrapper = styled.div`
   display: inline-flex;
@@ -14,8 +15,8 @@ const Wrapper = styled.div`
 const Routes = () => {
   return (
     <Wrapper className="routes_wrapper">
-      <Route exact={true} path={"/"} component={Search} />
-      <Route path={"/album/:id"} component={Album} />
+      <Route exact={true} path={resolvePath("/")} component={Search} />
+      <Route path={resolvePath("/album/:id")} component={Album} />
     </Wrapper>
   );
 };

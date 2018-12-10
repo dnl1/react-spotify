@@ -5,6 +5,9 @@ import { Label } from "../../style";
 import styled from "styled-components";
 import BackButton from "../BackButton";
 import { withRouter } from "react-router-dom";
+import { resolvePath } from "../../helpers/routeHelper";
+
+const notFoundPath = resolvePath('/assets/images/not-found.png');
 
 const Wrapper = styled.div`
   display: flex;
@@ -25,7 +28,7 @@ const AlbumLogoWrapper = styled.div`
   align-items: center;
 
   img {
-    background-image: url(/assets/images/not-found.png);
+    background-image: url(${notFoundPath});
     background-position-x: -94px;
     text-indent: -9999px;
   }

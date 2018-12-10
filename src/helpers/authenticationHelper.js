@@ -53,7 +53,7 @@ class AuthenticationHelper {
     const clientId = process.env.REACT_APP_SPOTIFY_API_CLIENT_ID;
 
     window.location.href = `${baseUrl}authorize?client_id=${clientId}&response_type=token&redirect_uri=${
-      window.location.origin
+      process.env.REACT_APP_REDIRECT_URI
     }`;
   };
 

@@ -5,15 +5,20 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const dotenv = require('dotenv');
 const webpack = require('webpack');
 
-var isProduction = (process.env.NODE_ENV === 'production');
+module.exports = (e, argv) => {
+    const isProduction = (argv.mode === 'production');
 
-module.exports = () => {
-    const env = dotenv.config().parsed;
+    const env = dotenv.config({
+        path: isProduction ? './.env.production' : './.env'
+    }).parsed;
 
     const envKeys = Object.keys(env).reduce((prev, next) => {
+        console.log('env item', JSON.stringify(env[next]));
         prev[`process.env.${next}`] = JSON.stringify(env[next]);
         return prev;
     }, {});
+
+
 
     return {
         devtool: 'source-map',
@@ -21,7 +26,7 @@ module.exports = () => {
         output: {
             path: path.join(__dirname, "/dist"),
             filename: "bundle.js",
-            publicPath: '/'
+            publicPath: isProduction ? '/react-spotify/' : '/'
         },
         devServer: {
             historyApiFallback: true,
@@ -52,7 +57,10 @@ module.exports = () => {
                 {
                     test: /\.(png|jpg|gif)$/,
                     use: [{
-                        loader: 'file-loader'
+                        loader: 'file-loader',
+                        options: {
+                            publicPath: isProduction ? '/react-spotify/' : '/'
+                        }
                     }]
                 }, {
                     test: /\.svg$/,

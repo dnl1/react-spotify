@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { DefaultLink } from "../../style";
+import { resolvePath } from "../../helpers/routeHelper";
+
+const notFoundPath = resolvePath('/assets/images/not-found.png');
 
 const Wrapper = styled.div`
   max-width: 200px;
@@ -14,7 +17,7 @@ const Wrapper = styled.div`
   margin-right: 51px;
 
   img {
-    background-image: url(/assets/images/not-found.png);
+    background-image: url(${notFoundPath});
     background-position-x: -197px;
     background-position-y: -96px;
     text-indent: -9999px;
@@ -29,13 +32,13 @@ const Wrapper = styled.div`
 class SearchListItem extends Component {
   render() {
     const image = this.props.images[1];
-    
+
     return (
       <Wrapper className="search__list__item">
-        <DefaultLink to={`/album/${this.props.id}`}>
+        <DefaultLink to={resolvePath(`/album/${this.props.id}`)}>
           <img src={image.url} width={200} height={200} />
         </DefaultLink>
-        <DefaultLink to={`/album/${this.props.id}`}>
+        <DefaultLink to={resolvePath(`/album/${this.props.id}`)}>
           {this.props.name}
         </DefaultLink>
         <DefaultLink dark="true" to={this.props.artists[0].href}>

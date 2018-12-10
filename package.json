@@ -6,13 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node_modules/.bin/webpack-dev-server --mode development --open --hot",
-    "build": "node_modules/.bin/webpack --config webpack.prod.js --mode production",
-    "serve": "node_modules/.bin/http-server ./dist"
+    "build": "node_modules/.bin/webpack --mode production --env.REACT_APP_REDIRECT_URI=https://dnl1.github.io/react-spotify --progress",
+    "serve": "node_modules/.bin/http-server ./dist",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b gh-pages -d dist"
   },
   "author": "Danilo Oliveira Gomes",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
+    "gh-pages": "^2.0.1",
     "npm": "^6.4.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
