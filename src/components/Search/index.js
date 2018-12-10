@@ -5,7 +5,7 @@ import { fetch } from "../../actions/searchActions";
 
 const mapStateToProps = state => {
   return {
-      ...state.albumsReducer
+      ...state.searchReducer
   };
 };
 

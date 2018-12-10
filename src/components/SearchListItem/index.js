@@ -4,18 +4,11 @@ import { connect } from "react-redux";
 import { fetch } from "../../actions/searchActions";
 
 const mapStateToProps = state => {
-  return {
-      ...state.albumsReducer
-  };
+  return {};
 };
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators(
-    {
-      fetch
-    },
-    dispatch
-  );
+  return {};
 };
 
 export default connect(

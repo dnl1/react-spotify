@@ -1,7 +1,7 @@
-import SearchList from "./component";
+import Album from "./component";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { fetch } from "../../actions/searchActions";
+import { getTrackByAlbumById } from "../../actions/albumActions";
 
 const mapStateToProps = state => {
   return {
@@ -12,7 +12,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
-      fetch
+      getTrackByAlbumById
     },
     dispatch
   );
@@ -21,4 +21,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(SearchList);
+)(Album);

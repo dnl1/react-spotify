@@ -14,6 +14,14 @@ class SpotifyApi {
     search(query) {
         return this.http.get(`search?q=${query}&type=album`);
     }
+
+    getAlbumById(id) {
+        return this.http.get(`albums/${id}`);
+    }
+
+    getTrackByAlbumById(id) {
+        return this.http.get(`albums/${id}/tracks`);
+    }
 }
 
 export default SpotifyApi;

@@ -1,19 +1,26 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import Svg from "../../assets/images/spotify-icon.svg";
+import Icon from "../../assets/images/spotify-icon.png";
 
 const SideMenuWrapper = styled.aside`
-  background-color: ${props => props.theme.backgroundColor};
   width: 100px;
   padding: 5px;
-  display: inline-block;
+  display: inline-flex;
+  flex-flow: column;
+  vertical-align: top;
+`;
+
+const TempSvg = styled(Svg)`
+  background: white;
+  border-radius: 99px;
 `;
 
 class SideMenu extends Component {
   render() {
     return (
       <SideMenuWrapper>
-        <Svg />
+        <img src={Icon} width="85" height="85"/>
       </SideMenuWrapper>
     );
   }

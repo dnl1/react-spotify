@@ -5,6 +5,8 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const dotenv = require('dotenv');
 const webpack = require('webpack');
 
+var isProduction = (process.env.NODE_ENV === 'production');
+
 module.exports = () => {
     const env = dotenv.config().parsed;
 
@@ -18,7 +20,15 @@ module.exports = () => {
         entry: "./src/index.js",
         output: {
             path: path.join(__dirname, "/dist"),
-            filename: "bundle.js"
+            filename: "bundle.js",
+            publicPath: '/'
+        },
+        devServer: {
+            historyApiFallback: true,
+            inline: true,
+            stats: 'errors-only',
+            compress: isProduction,
+            contentBase: '/'
         },
         module: {
             rules: [{
@@ -68,10 +78,15 @@ module.exports = () => {
                 filename: 'css/style.css'
             }),
             new webpack.DefinePlugin(envKeys),
-            new CopyWebpackPlugin([
-                // relative path is from src
-                { from: './src/assets/images/favicon.png', to: 'assets/images/favicon.png' }, // <- your path to favicon
-              ])
+            new CopyWebpackPlugin([{
+                    from: './src/assets/images/*.png',
+                    to: 'assets/images/[name].png'
+                },
+                {
+                    from: './src/assets/images/*.svg',
+                    to: 'assets/images/[name].svg'
+                }
+            ])
         ]
     }
 }

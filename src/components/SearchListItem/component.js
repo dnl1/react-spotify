@@ -1,14 +1,47 @@
 import React, { Component } from "react";
+import styled from "styled-components";
+import { DefaultLink } from "../../style";
+
+const Wrapper = styled.div`
+  max-width: 200px;
+  width: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  margin: 15px 0;
+  margin-left: 5px;
+  margin-right: 51px;
+
+  img {
+    background-image: url(/assets/images/not-found.png);
+    background-position-x: -197px;
+    background-position-y: -96px;
+    text-indent: -9999px;
+  }
+
+  :hover {
+    transform: scale(1.03);
+    filter: grayscale(50%);
+  }
+`;
 
 class SearchListItem extends Component {
   render() {
     const image = this.props.images[1];
+    
     return (
-      <div>
-        <img src={image.url} width={image.width} height={image.height} />
-        <a href={this.props.href}>{this.props.name}</a>
-        <a href={this.props.artists[0].href}>{this.props.artists[0].name}</a>
-      </div>
+      <Wrapper className="search__list__item">
+        <DefaultLink to={`/album/${this.props.id}`}>
+          <img src={image.url} width={200} height={200} />
+        </DefaultLink>
+        <DefaultLink to={`/album/${this.props.id}`}>
+          {this.props.name}
+        </DefaultLink>
+        <DefaultLink dark="true" to={this.props.artists[0].href}>
+          {this.props.artists[0].name}
+        </DefaultLink>
+      </Wrapper>
     );
   }
 }

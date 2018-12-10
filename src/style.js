@@ -1,4 +1,5 @@
-import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Wrapper = styled.main``;
 
@@ -20,12 +21,6 @@ export const GlobalStyle = createGlobalStyle`
     }
 `;
 
-export const SearchWrapper = styled.div`
-  display: inline-block;
-  margin-left: 30px;
-  width: 85%;
-`;
-
 export const Input = styled.input`
   background: transparent;
   border: 0;
@@ -39,9 +34,37 @@ export const Input = styled.input`
   color: ${props => props.theme.fontColor};
 `;
 
+export const GreaterInput = styled(Input)`
+  font-size: ${props => props.theme.fontSize.greater};
+`;
+
 export const Label = styled.label`
-  color: ${props => props.theme.fontColor};
-  font-size: ${props => props.theme.fontSize.tiny};
+  color: ${props =>
+    props.dark ? props.theme.greyColor : props.theme.fontColor};
+  font-size: ${props =>
+    props.small
+      ? props.theme.fontSize.small
+      : props.regular
+      ? props.theme.fontSize.regular
+      : props.theme.fontSize.tiny};
   display: block;
   padding: 0 5px;
+`;
+
+export const RegularLabel = styled(Label)`
+  font-size: ${props => props.theme.fontSize.regular};
+  color: ${props =>
+    props.dark ? props.theme.greyColor : props.theme.fontColor};
+`;
+
+export const DefaultLink = styled(Link)`
+  text-decoration: none;
+  color: ${props =>
+    props.dark ? props.theme.greyColor : props.theme.fontColor};
+  display: flex;
+  flex-flow: column;
+
+  :hover {
+    text-decoration: underline;
+  }
 `;
