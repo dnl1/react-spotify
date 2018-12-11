@@ -77,8 +77,13 @@ module.exports = (e, argv) => {
             new HtmlWebPackPlugin({
                 hash: true,
                 filename: "index.html", //target html
-                template: "./public/index.html" //source html
+                template: "./public/index.html", //source html
+                favicon:'src/assets/images/favicon.png',
+                inject: true
             }),
+            // new HtmlWebPackPlugin({
+            //     inject: true
+            // }),
             new ExtractTextPlugin({
                 filename: 'css/style.css'
             }),

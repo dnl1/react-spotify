@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   overflow: hidden;
 
   img {
-    transition: .2s ease;
+    transition: .3s ease;
     background-image: url(${notFoundPath});
     background-position-x: -197px;
     background-position-y: -96px;
@@ -28,7 +28,7 @@ const Wrapper = styled.div`
 
   :hover {
     img{
-      transform: scale(1.15);
+      transform: scale(1.1);
     }
   }
 
@@ -48,10 +48,10 @@ class SearchListItem extends Component {
 
     return (
       <Wrapper className="search__list__item">
-        <StyledDefaultLink to={resolvePath(`/album/${this.props.id}`)}>
+        <StyledDefaultLink to={`/album/${this.props.id}`}>
           <img src={image.url} width={200} height={200} />
         </StyledDefaultLink>
-        <DefaultLink to={resolvePath(`/album/${this.props.id}`)}>
+        <DefaultLink to={`/album/${this.props.id}`}>
           {this.props.name}
         </DefaultLink>
         <DefaultLink dark="true" to={this.props.artists[0].href}>

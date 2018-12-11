@@ -74,10 +74,11 @@ class Album extends Component {
   }
 
   backButtonClick = () => {
-    this.props = {};
+    const { history } = this.props;
+
     if (window.audio) window.audio.pause();
     if (window.history.state && window.history.state.key) window.history.back();
-    else this.props.history.push("/");
+    else history.push("/");
   };
 
   saveFavoriteAlbum = (id, name, artists, images) => {
