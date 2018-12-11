@@ -1,9 +1,10 @@
 import React from "react";
 import Search from "./components/Search";
 import Album from "./components/Album";
-import { Route, BrowserRouter, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import styled from "styled-components";
 import { media } from "./style";
+import { resolvePath } from "./helpers/routeHelper";
 
 const Wrapper = styled.div`
   display: inline-flex;
@@ -20,8 +21,10 @@ const Wrapper = styled.div`
 const Routes = () => {
   return (
     <Wrapper className="routes_wrapper">
-      <Route exact={true} path={"/"} component={Search} />
-      <Route path={"/album/:id"} component={Album} />
+      <Switch>
+        <Route exact={true} path={"/"} component={Search} />
+        <Route path={"/album/:id"} component={Album} />
+      </Switch>
     </Wrapper>
   );
 };
