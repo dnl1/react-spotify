@@ -16,12 +16,11 @@ const Wrapper = styled.div`
   width: 95%;
 
     ${media.tablet`
-    width: 100%;
-    position: absolute;
-    top: 0;
-    background-color: ${props => props.theme.backgroundColor};
-    padding: 4%;
-    padding-top: 3%;
+      width: 99%;
+      position: absolute;
+      top: 0;
+      background-color: ${props => props.theme.backgroundColor};
+      padding: 4%;
   `}
 `;
 

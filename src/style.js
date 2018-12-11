@@ -38,6 +38,7 @@ export const GlobalStyle = createGlobalStyle`
 
     * {
         box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
     }
 `;
 
@@ -61,8 +62,8 @@ export const Label = styled.label`
     props.small
       ? props.theme.fontSize.small
       : props.regular
-      ? props.theme.fontSize.regular
-      : props.theme.fontSize.tiny};
+        ? props.theme.fontSize.regular
+        : props.theme.fontSize.tiny};
   display: block;
   padding: 0 5px;
 `;
