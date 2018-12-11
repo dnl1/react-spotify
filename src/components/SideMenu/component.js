@@ -2,13 +2,20 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import Svg from "../../assets/images/spotify-icon.svg";
 import Icon from "../../assets/images/spotify-icon.png";
+import { media } from "../../style";
 
 const SideMenuWrapper = styled.aside`
-  width: 100px;
+  width: 15%;
+  max-width: 130px;
   padding: 5px;
   display: inline-flex;
   flex-flow: column;
   vertical-align: top;
+  ${media.tablet`
+    flex-flow: row;
+    display:flex;
+    width: auto;
+  `}
 `;
 
 const TempSvg = styled(Svg)`
@@ -20,7 +27,7 @@ class SideMenu extends Component {
   render() {
     return (
       <SideMenuWrapper>
-        <img src={Icon} width="85" height="85"/>
+        <img src={Icon} width="85" height="85" />
       </SideMenuWrapper>
     );
   }

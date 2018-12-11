@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { DefaultLink } from "../../style";
 import { resolvePath } from "../../helpers/routeHelper";
+import { media } from "../../style";
 
 const notFoundPath = resolvePath('/assets/images/not-found.png');
 
@@ -15,8 +16,10 @@ const Wrapper = styled.div`
   margin: 15px 0;
   margin-left: 5px;
   margin-right: 51px;
+  overflow: hidden;
 
   img {
+    transition: .2s ease;
     background-image: url(${notFoundPath});
     background-position-x: -197px;
     background-position-y: -96px;
@@ -24,20 +27,30 @@ const Wrapper = styled.div`
   }
 
   :hover {
-    transform: scale(1.03);
-    filter: grayscale(50%);
+    img{
+      transform: scale(1.15);
+    }
   }
+
+  ${media.tablet`
+    justify-content: space-between;
+    margin: 2%;
+  `}  
 `;
+
+const StyledDefaultLink = styled(DefaultLink)`
+  overflow: hidden;
+`
 
 class SearchListItem extends Component {
   render() {
-    const image = this.props.images[1];
+    const image = this.props.images && this.props.images.length > 1 ? this.props.images[1] : { url: '' };
 
     return (
       <Wrapper className="search__list__item">
-        <DefaultLink to={resolvePath(`/album/${this.props.id}`)}>
+        <StyledDefaultLink to={resolvePath(`/album/${this.props.id}`)}>
           <img src={image.url} width={200} height={200} />
-        </DefaultLink>
+        </StyledDefaultLink>
         <DefaultLink to={resolvePath(`/album/${this.props.id}`)}>
           {this.props.name}
         </DefaultLink>

@@ -10,10 +10,7 @@ Using:
 - BEM
 
 Todo:
-- Responsive
 - Full PWA (ServiceWorker + Chrome Audits OK)
 - Effects on Search
 - Separate and modularize Webpack Dev and Webpack Production
-- Don't show old content when open another album
 - Artist's album page
-- Cache latest search on storage.

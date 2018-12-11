@@ -25,15 +25,20 @@ const RegularLabel = styled(Label)`
   `}
 `;
 
-class SearchList extends Component {
+class FavoriteAlbums extends Component {
   render() {
-    const { albums, query } = this.props;
+    let albums = { items: [] };
+    const jsonFavoriteAlbums = localStorage.getItem('favoriteAlbums');
 
-    return albums.items.length > 0 ? (
+    if (jsonFavoriteAlbums) {
+      albums = JSON.parse(jsonFavoriteAlbums);
+    }
+
+    return jsonFavoriteAlbums && albums.length > 0 ? (
       <div>
-        <RegularLabel>Resultados encontrados para "{query}"</RegularLabel>
+        <RegularLabel>Álbuns buscados recentemente</RegularLabel>
         <Wrapper className="search__list">
-          {this.props.albums.items.map(item => {
+          {albums.map(item => {
             return (
               <SearchListItem
                 key={item.id}
@@ -49,4 +54,4 @@ class SearchList extends Component {
   }
 }
 
-export default SearchList;
+export default FavoriteAlbums;

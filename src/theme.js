@@ -9,6 +9,7 @@ export default {
     small: '16px',
     regular: '18px',
     great: '24px',
+    mobileGreater: '30px',
     greater: '48px'
   }
 };

@@ -42,6 +42,14 @@ export const fetchTrackByAlbumIdError = reason => {
   };
 };
 
+export const reset = () => {
+  return dispatch => {
+    dispatch({
+      type: 'RESET_ALBUM'
+    });
+  }
+}
+
 export const getAlbumById = id => {
   return dispatch => {
     const api = new SpotifyApi();

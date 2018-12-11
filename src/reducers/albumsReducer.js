@@ -12,6 +12,7 @@ export const albumsReducer = (state = {}, action) => {
             return {
                 ...state,
                 reason: action.reason,
+                loading: false
             }
 
         case 'FETCHING_ALBUM_BY_ID':
@@ -24,7 +25,6 @@ export const albumsReducer = (state = {}, action) => {
             return {
                 ...state,
                 ...action.payload,
-                query: action.query,
                 loading: false
             }
 
@@ -38,7 +38,12 @@ export const albumsReducer = (state = {}, action) => {
             return {
                 ...state,
                 reason: action.reason,
+                loading: false
             }
+
+        case 'RESET_ALBUM':
+            return {}
+
         default:
             return state;
     }

@@ -16,11 +16,23 @@ export const fetchError = reason => {
 };
 
 export const fetch = query => {
-  return dispatch => {
+  return (dispatch, getState) => {
     const api = new SpotifyApi();
+    const state = getState();
+
+    const cachedResult = state.searchReducer.cache.filter(item => item.query === query)[0];
+
+    if (cachedResult) {
+      dispatch(fetchSuccess(cachedResult.payload, cachedResult.query));
+      return;
+    }
 
     if (query.length === 0) {
-      dispatch(fetchSuccess({}, ""));
+      dispatch(fetchSuccess({
+        albums: {
+          items: []
+        }
+      }, ""));
       return;
     }
 

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { msToMinutesAndSeconds } from "../../helpers/utils";
-import { Label } from "../../style";
+import { Label, media } from "../../style";
 import { resolvePath } from "../../helpers/routeHelper";
 
 const playSvgPath = resolvePath('/assets/images/play.svg');
@@ -11,6 +11,10 @@ const AlbumTrackListWrapper = styled.div`
   display: inline-flex;
   flex-flow: column;
   width: 70%;
+
+    ${media.tablet`
+    width: 100%;
+  `}
 `;
 
 const OrderedList = styled.ol`
@@ -18,6 +22,11 @@ const OrderedList = styled.ol`
   margin: 0;
   counter-reset: item;
   list-style-type: none;
+  padding-left: 6%;
+
+  ${media.tablet`
+    padding-left: 0;
+  `}
 
   li {
     cursor: pointer;

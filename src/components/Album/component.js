@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import AuthenticationHelper from "../../helpers/authenticationHelper";
 import AlbumTrackList from "../AlbumTrackList";
-import { Label } from "../../style";
+import { Label, media } from "../../style";
 import styled from "styled-components";
 import BackButton from "../BackButton";
 import { withRouter } from "react-router-dom";
@@ -14,12 +14,25 @@ const Wrapper = styled.div`
   flex-flow: row wrap;
   align-items: end;
   width: 95%;
+
+    ${media.tablet`
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background-color: ${props => props.theme.backgroundColor};
+    padding: 4%;
+    padding-top: 3%;
+  `}
 `;
 
 const AlbumWrapper = styled.div`
   display: flex;
   flex-flow: row;
   width: 100%;
+
+  ${media.tablet`
+    flex-flow: column;
+  `}
 `;
 
 const AlbumLogoWrapper = styled.div`
@@ -31,6 +44,7 @@ const AlbumLogoWrapper = styled.div`
     background-image: url(${notFoundPath});
     background-position-x: -94px;
     text-indent: -9999px;
+    max-width: 400px;
   }
 `;
 
@@ -53,8 +67,11 @@ class Album extends Component {
 
     const { id } = this.props.match.params;
 
-    console.log('will mount');
     this.props.getAlbumById(id);
+  }
+
+  componentWillUnmount() {
+    this.props.reset();
   }
 
   backButtonClick = () => {
@@ -64,22 +81,42 @@ class Album extends Component {
     else this.props.history.push("/");
   };
 
+  saveFavoriteAlbum = (id, name, artists, images) => {
+    const jsonFavoriteAlbum = localStorage.getItem('favoriteAlbums');
+    const favoriteAlbums = jsonFavoriteAlbum ? JSON.parse(jsonFavoriteAlbum) : [];
+
+    const repeated = favoriteAlbums.map(item => item.id === id).filter(item => item === true);
+
+    if (repeated.length === 0 || (repeated && repeated[0] === false)) {
+
+      favoriteAlbums.push({
+        id,
+        name,
+        artists,
+        images
+      });
+      localStorage.setItem('favoriteAlbums', JSON.stringify(favoriteAlbums));
+    }
+  }
+
   render() {
-    const { images, name, artists, id, loading } = { ...this.props };
+    console.log('album props', this.props);
+    const { images, name, artists, id } = { ...this.props };
 
     const artist = artists !== undefined ? artists[0] : {};
     const largeImage = images !== undefined ? images[0] : {};
 
-    return loading ? (
-      <span />
-    ) : (
-      <Wrapper className="album__wrapper">
-        <BackButton className="back_button" onClick={this.backButtonClick}>
+    if (id && artists && images)
+      this.saveFavoriteAlbum(id, name, artists, images);
+
+    return (
+      <Wrapper className="component-wrapper">
+        <BackButton className="back-button" onClick={this.backButtonClick}>
           Voltar
         </BackButton>
-        <AlbumWrapper>
+        <AlbumWrapper className="album-wrapper">
           <AlbumLogoWrapper>
-            <img src={largeImage.url} width={400} height={400} />
+            <img src={largeImage.url} width="100%" height="auto" />
             <StyledLabel regular>{name}</StyledLabel>
             <StyledLabel dark="true" small>
               {artist.name}
