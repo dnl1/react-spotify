@@ -4,7 +4,6 @@ import Album from "./components/Album";
 import { Route, Switch } from "react-router-dom";
 import styled from "styled-components";
 import { media } from "./style";
-import { resolvePath } from "./helpers/routeHelper";
 
 const Wrapper = styled.div`
   display: inline-flex;
@@ -23,7 +22,7 @@ const Routes = () => {
     <Wrapper className="routes_wrapper">
       <Switch>
         <Route exact={true} path={"/"} component={Search} />
-        <Route path={"/album/:id"} component={Album} />
+        <Route exact={true} path={"/album/:id"} component={Album} />
       </Switch>
     </Wrapper>
   );
