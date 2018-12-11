@@ -10,7 +10,6 @@ Using:
 - BEM
 
 Todo:
-- Full PWA (ServiceWorker + Chrome Audits OK)
 - Effects on Search
 - Separate and modularize Webpack Dev and Webpack Production
 - Artist's album page
