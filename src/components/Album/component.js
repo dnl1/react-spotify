@@ -100,7 +100,6 @@ class Album extends Component {
   }
 
   render() {
-    console.log('album props', this.props);
     const { images, name, artists, id } = { ...this.props };
 
     const artist = artists !== undefined ? artists[0] : {};
