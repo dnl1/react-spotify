@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node_modules/.bin/webpack-dev-server --mode development --open --hot",
-    "build": "node_modules/.bin/webpack --mode production --env.REACT_APP_REDIRECT_URI=https://dnl1.github.io/react-spotify --progress",
+    "build": "node_modules/.bin/webpack --mode production --progress",
     "serve": "node_modules/.bin/http-server ./dist",
     "predeploy": "npm run build",
     "deploy": "gh-pages -b gh-pages -d dist"
