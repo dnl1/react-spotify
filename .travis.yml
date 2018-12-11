@@ -9,11 +9,13 @@ cache:
 script:
   - npm run build
 
+before_deploy:
+  - cd dist
+
 deploy:
   provider: pages
   skip-cleanup: true
   github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-  keep-history: true
-  project: ./dist/
+  keep-history: true  
   on:
     branch: master
