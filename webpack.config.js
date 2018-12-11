@@ -81,9 +81,13 @@ module.exports = (e, argv) => {
                 favicon:'src/assets/images/favicon.png',
                 inject: true
             }),
-            // new HtmlWebPackPlugin({
-            //     inject: true
-            // }),
+            new HtmlWebPackPlugin({ //HACK TO HANDLE BROWSERROUTE ON GITHUB PAGES
+                hash: true,
+                filename: "404.html", //target html
+                template: "./public/index.html", //source html
+                favicon:'src/assets/images/favicon.png',
+                inject: true
+            }),
             new ExtractTextPlugin({
                 filename: 'css/style.css'
             }),
