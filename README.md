@@ -15,3 +15,4 @@ Todo:
 - Effects on Search
 - Separate and modularize Webpack Dev and Webpack Production
 - Artist's album page
+- Chrome Audits OK
