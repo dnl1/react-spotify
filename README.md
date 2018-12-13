@@ -1,6 +1,8 @@
 # react-spotify
 [![Build Status](https://travis-ci.org/dnl1/react-spotify.svg?branch=master)](https://travis-ci.org/dnl1/react-spotify)
 
+![Demo Animation](../assets/react-spotify-demo-1.PNG?raw=true)
+
 [Live Demo](http://dnl1.github.io/react-spotify)
 
 Using:
