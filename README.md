@@ -1,5 +1,6 @@
 # react-spotify
 [![Build Status](https://travis-ci.org/dnl1/react-spotify.svg?branch=master)](https://travis-ci.org/dnl1/react-spotify)
+[![Lighthouse score: 85/100](https://lighthouse-badge.appspot.com/?score=100&compact&category=PWA)](https://dnl1.github.io/react-spotify/)
 
 [Live Demo](http://dnl1.github.io/react-spotify)
 
@@ -11,6 +12,7 @@ Using:
 - Webpack
 - Styled Components
 - BEM
+- Flexbox
 - Travis CI
 
 Todo:
