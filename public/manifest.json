@@ -5,7 +5,7 @@
     "icons": [
       {
         "src": "/react-spotify/assets/images/spotify-pwa.png",
-        "sizes": "512x512 198x198 172x172 64x64 32x32 24x24 16x16",
+        "sizes": "any",
         "type": "image/x-icon"
       }
     ],
