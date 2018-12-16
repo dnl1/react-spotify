@@ -1,10 +1,11 @@
 {
     "short_name": "React Spotify",
     "name": "A lab to show integration with Spotify Api",
+    "orientation": "portrait",
     "icons": [
       {
-        "src": "/react-spotify/spotify-pwa.png",
-        "sizes": "64x64 32x32 24x24 16x16",
+        "src": "/react-spotify/assets/images/spotify-pwa.png",
+        "sizes": "198x198 172x172 64x64 32x32 24x24 16x16",
         "type": "image/x-icon"
       }
     ],
