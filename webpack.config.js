@@ -102,7 +102,7 @@ module.exports = (e, argv) => {
                     to: 'assets/images/[name].svg'
                 },
                 {
-                    from: './src/manifest.json',
+                    from: './public/manifest.json',
                     to: 'manifest.json'
                 }
             ]),
