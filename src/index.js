@@ -22,6 +22,7 @@ ReactDOM.render(
 );
 
 registerServiceWorker();
+document.querySelector('#manifest').setAttribute('href', `${process.env.BASENAME}manifest.json`);
 
 if (module.hot) {
     module.hot.accept();
