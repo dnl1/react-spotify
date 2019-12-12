@@ -20,3 +20,4 @@ Todo:
 - Separate and modularize Webpack Dev and Webpack Production
 - Artist's album page
 - Offline Page with Workbox
+- Tests
